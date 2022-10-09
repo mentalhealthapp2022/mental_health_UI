@@ -8,6 +8,7 @@ import Contacts from "../../screens/Contacts";
 import Scheduling from "../../screens/Scheduling";
 import TabNavigation from "../tabNavigation/TabNavigation";
 import Quickhelp from "../../screens/Quickhelp";
+import Chat from "../../screens/Chat";
 
 const Stack = createStackNavigator ()
 
@@ -49,6 +50,11 @@ return(
 <Stack.Screen
     name="quickHelpScreen"
     component={Quickhelp}
+    />
+
+<Stack.Screen
+    name="chatScreen"
+    component={Chat}
     />
 
 

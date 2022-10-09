@@ -23,19 +23,19 @@ const Item = ({ item }) => (
     </View>
   );
   
-export default function Contacts(){
+export default function Contacts({navigation}){
   const [username, setName,] = useState([
      {  key: '1', username: "Caroline"},
-     {  key: '1', username: "David"},
-     {  key: '1', username: "Emma"},
-     { key: '1', username: "John"},
+     {  key: '2', username: "David"},
+     {  key: '3', username: "Emma"},
+     { key: '4', username: "John"},
 ]);
 
 const renderItem = ({ item }) => {
     return (
         <View style={styles.item}>
       <TouchableOpacity onPress={()=> {
-        Linking.openURL(item.link)
+        navigation.navigate("chatScreen", {})
       }}>
         <View style = {{flexDirection: 'row'}}>
 

@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { View, Text, StyleSheet, TextInput, ImageBackground, Button, SafeAreaView, Alert, TouchableOpacity, Image} from "react-native";
 import { GiftedChat} from 'react-native-gifted-chat';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,8 +24,12 @@ import { useEffect, useState } from "react";
 // //const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export function Example(){}
-const [messages, setMessages] = useState([]);
-useEffect(() = {
+
+
+
+const Chat = () => {
+    const [messages, setMessages] = useState([]);
+useEffect(() =>{
     setMessages([
         {
             _id: 1, 
@@ -40,24 +44,21 @@ useEffect(() = {
       ])
     }, [])
 
-
-
-const Chat = () => {
     return (
-      <View style={StyleSheet.container}>
+      <View style={styles.container}>
         <Text> Chat Screen</Text>
         <Button title="Click here" onPress={() =>{}}/>
       </View>
     );
 };
-export default Chat;
-
-const sytles = Stylesheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1, 
         alignItems: 'center',
         justifyContent: 'center',
     },
 });
+
+export default Chat;
 
 
