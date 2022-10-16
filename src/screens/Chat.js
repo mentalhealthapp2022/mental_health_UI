@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, StyleSheet, TextInput, ImageBackground, Button, SafeAreaView, Alert, TouchableOpacity, Image} from "react-native";
-import { GiftedChat} from 'react-native-gifted-chat';
-import React, { useEffect, useState } from "react";
+import { Bubble, GiftedChat} from 'react-native-gifted-chat';
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,13 +42,36 @@ useEffect(() =>{
             },
           },
       ])
-    }, [])
+    }, []);
+
+    const onSend = useCallback((messages = []) => {
+        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    }, []);
+
+const renderSend = (props) => {
+    return(
+        <Send {...props}>
+            <View>
+                <MaterialCommunityIcons 
+                name= 'send-circle' 
+                style={{marginBottom: 5, marginRight: 5}}
+                size={32}
+                />
+            </View>
+        </Send>
+    );
+};
 
     return (
-      <View style={styles.container}>
-        <Text> Chat Screen</Text>
-        <Button title="Click here" onPress={() =>{}}/>
-      </View>
+        <GiftedChat
+        messages={messages}
+        onSend={messages => onSend(messages)}
+        user={{_id: 1, }}
+        />
+    //   <View style={styles.container}>
+    //     <Text> Chat Screen</Text>
+    //     <Button title="Click here" onPress={() =>{}}/>
+    //   </View>
     );
 };
 const styles = StyleSheet.create({
