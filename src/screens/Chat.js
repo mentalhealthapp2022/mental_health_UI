@@ -27,9 +27,13 @@ export function Example(){}
 
 
 
-const Chat = () => {
+const Chat = ({route, navigation}) => {
     const [messages, setMessages] = useState([]);
 useEffect(() =>{
+    navigation.setOptions({
+        headerTitle: route.params.contactData.username
+    })
+    console.log(JSON.stringify(route.params.contactData))
     setMessages([
         {
             _id: 1, 

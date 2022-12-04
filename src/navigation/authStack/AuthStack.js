@@ -5,10 +5,11 @@ import {createStackNavigator} from "@react-navigation/stack"
 import Login from "../../screens/Login";
 import Home from "../../screens/Home";
 import Contacts from "../../screens/Contacts";
-import Scheduling from "../../screens/Scheduling";
+// import Scheduling from "../../screens/Scheduling";
 import TabNavigation from "../tabNavigation/TabNavigation";
 import Quickhelp from "../../screens/Quickhelp";
 import Chat from "../../screens/Chat";
+import Signup from "../../screens/Signup";
 
 const Stack = createStackNavigator ()
 
@@ -41,11 +42,11 @@ return(
     name="contactScreen"
     component={Contacts}
     />
-
+{/* 
 <Stack.Screen
     name="schedulingScreen"
     component={Scheduling}
-    />
+    /> */}
 
 <Stack.Screen
     name="quickHelpScreen"
@@ -56,6 +57,12 @@ return(
     name="chatScreen"
     component={Chat}
     />
+
+<Stack.Screen
+    name="signupScreen"
+    component={Signup}
+    />
+
 
 
 

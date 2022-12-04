@@ -28,14 +28,16 @@ export default function Contacts({navigation}){
      {  key: '1', username: "Caroline"},
      {  key: '2', username: "David"},
      {  key: '3', username: "Emma"},
-     { key: '4', username: "John"},
+    
 ]);
 
 const renderItem = ({ item }) => {
+  console.log(item.username, "ITEM")
+  
     return (
         <View style={styles.item}>
       <TouchableOpacity onPress={()=> {
-        navigation.navigate("chatScreen", {})
+        navigation.navigate("chatScreen", {"contactData": item})
       }}>
         <View style = {{flexDirection: 'row'}}>
 

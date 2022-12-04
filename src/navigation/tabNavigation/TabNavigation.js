@@ -45,7 +45,7 @@ return(
     }
   />
 
-<BottomTab.Screen 
+{/* <BottomTab.Screen 
         name="schedulingScreen" 
         component={Scheduling}
         options={
@@ -58,7 +58,7 @@ return(
              )
         }
     }
-  />
+  /> */}
 
 <BottomTab.Screen 
         name="QuickhelpScreen" 

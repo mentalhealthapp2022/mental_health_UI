@@ -45,16 +45,27 @@ function Login ({navigation}) {
             Login
         </Text>
     </TouchableOpacity>
-    <Text style= {styles.fp}>
-        Forgot Password? 
-    </Text>
+    <TouchableOpacity
+        style= {styles.fp}
+        title= "Forgot Password"
+        color= '#94AB67'
+        onPress={() => {
+            navigation.navigate("resetPasswordScreen")
+            console.log("User wants to reset password")}}>
+           <Text>
+             Click here to reset your password
+           </Text> 
+    </TouchableOpacity>
+    
 <TouchableOpacity
-style={styles.forgotPassword}
-title= "Forgot Password?"
+style={styles.createAccount}
+title= "Create Account"
 color='#94AB67' 
-onPress={() => console.log ("Forgot password pressed")}>
+onPress={() => {
+navigation.navigate("signupScreen")
+console.log ("User pressed create account")}}>
     <Text>
-        Click Here
+        Click here to create an account
     </Text>
 </TouchableOpacity>
 </View>
@@ -109,7 +120,7 @@ const styles = StyleSheet.create({
        justifyContent: 'center',
        alignSelf:'center'
       },
-      forgotPassword: {
+      createAccount: {
         justifyContent:'center',
         alignSelf: 'center',
         marginTop: 10,
@@ -155,6 +166,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '100'
    },
+
+   
 
         
 
