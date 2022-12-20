@@ -1,12 +1,37 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, ImageBackground, Button, SafeAreaView, Alert, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TextInput, ScrollView,ImageBackground, Button, SafeAreaView, Alert, TouchableOpacity, Image } from "react-native";
+import axiosInstance from "../extension/AxiosInstance";
+import Loader from "../custom/Loader"
 
 function Login ({navigation}) {
     const [userid, setUserid]=useState("")
     const [password, setPassword]=useState()
+    const [isLoading, setLoading] = useState(false)
+
+    const loginUser = async (username,password)=>{
+        setLoading(true)
+        const data = {
+            email: username,
+            password: password
+          }
+        try{
+            await axiosInstance.post("auth/login",data).then((response)=>{
+                
+                if(response.code == 200){
+                    console.log("Logged In");
+                    setLoading(false)
+                    navigation.navigate("tabNavigator", {})
+                }
+            })
+        } catch(error){
+            setLoading(false)
+        }
+    }
 
     return(
+        <ScrollView>
 <View style={styles.view1}>
+<Loader loading={isLoading} />
     <View style={styles.section1}>
     <Text style={styles.text1}>
         Welcome to the Mental Health App
@@ -30,6 +55,9 @@ function Login ({navigation}) {
       <TextInput
         style={styles.inputpassword}
         placeholder= 'Password'
+        onChangeText={(text)=>{
+            setPassword(text)
+        }}
         secureTextEntry= {true}>
       </TextInput>
     </View>
@@ -39,7 +67,8 @@ function Login ({navigation}) {
     title= "Login"
     color= '#96b58b'
     onPress={() => {
-        navigation.navigate("tabNavigator", {})
+        //navigation.navigate("tabNavigator", {})
+        loginUser(userid,password)
         console.log ("sign up pressed " + userid)}}>
         <Text>
             Login
@@ -71,6 +100,7 @@ console.log ("User pressed create account")}}>
 </View>
      
 </View>
+</ScrollView>
     )
 }
 

@@ -21,6 +21,11 @@ return(
 <Stack.Screen
     name="loginScreen"
     component={Login}
+    options= {{
+        title:"",
+        headerShown: false
+
+    }}
     />
 
     <Stack.Screen
