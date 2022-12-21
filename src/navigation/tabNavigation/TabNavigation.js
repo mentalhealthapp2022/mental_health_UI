@@ -6,20 +6,20 @@ import Home from "../../screens/Home";
 import Contacts from "../../screens/Contacts";
 import Scheduling from "../../screens/Scheduling";
 import Quickhelp from "../../screens/Quickhelp";
+import Profile from "../../screens/Profile"
 
 const BottomTab = createBottomTabNavigator();
 
 function TabNavigation () {
 return(
     <BottomTab.Navigator
-    tabBarOptions={{}}
     >
   
   <BottomTab.Screen 
         name="homeScreen" 
         component={Home}
         options={
-          {title: " ", 
+          {title: "Meetings", 
           tabBarIcon: ({ color }) => (
             <Image
             style={[styles.menuIcon, { tintColor: color }]}
@@ -34,7 +34,7 @@ return(
         name="contactScreen" 
         component={Contacts}
         options={
-          {title: " ", 
+          {title: "Contacts", 
           tabBarIcon: ({ color }) => (
             <Image
             style={[styles.menuIcon, { tintColor: color }]}
@@ -69,6 +69,21 @@ return(
             <Image
             style={[styles.menuIcon, { tintColor: color }]}
                 source={require('../../assests/images/question.png')}
+            />
+             )
+        }
+    }
+  />
+
+<BottomTab.Screen 
+        name="profileScreen" 
+        component={Profile}
+        options={
+          {title: "Profile", 
+          tabBarIcon: ({ color }) => (
+            <Image
+            style={[styles.menuIcon, { tintColor: color }]}
+                source={require('../../assests/images/person.png')}
             />
              )
         }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, ScrollView,ImageBackground, Button, SafeAreaView, Alert, TouchableOpacity, Image } from "react-native";
 import axiosInstance from "../extension/AxiosInstance";
 import Loader from "../custom/Loader"
+import { setAsyncData,getAsyncData } from '../extension/ApiUtils'
 
 function Login ({navigation}) {
     const [userid, setUserid]=useState("")
@@ -18,12 +19,17 @@ function Login ({navigation}) {
             await axiosInstance.post("auth/login",data).then((response)=>{
                 
                 if(response.code == 200){
+                    setAsyncData("token",response.tokens.access.token)
+                    setAsyncData("refresh",response.tokens.refresh.token)
                     console.log("Logged In");
                     setLoading(false)
-                    navigation.navigate("tabNavigator", {})
+                    navigation.replace("tabNavigator", {})
+                } else {
+                    console.log("ELSE");
                 }
             })
         } catch(error){
+            console.log("ERROR ",error);
             setLoading(false)
         }
     }

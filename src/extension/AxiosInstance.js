@@ -6,7 +6,7 @@ import { setAsyncData,getAsyncData } from '../extension/ApiUtils'
 
 async function getRefreshToken() {
     const token = await getAsyncData('token');
-    const refreshToken = await getAsyncData('refreshToken')
+    const refreshToken = await getAsyncData('refresh')
     axiosInstance.post("auth/refreshtoken", { token: token, refreshToken: refreshToken }).then((response) => {
         try {
             if (response.status == 401) {
@@ -36,11 +36,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(async (config) => {
     console.log("+++++")
-    // //const token = await getAsyncData('token');
-    // if (token) {
-    //     console.log("------")
-    //     config.headers.Authorization = `Bearer ${token}`
-    // }
+    const token = await getAsyncData('token');
+    if (token) {
+        console.log("------")
+        config.headers.Authorization = `Bearer ${token}`
+    }
     console.log("@@@ ",config);
     return config;
 }, (error) => {
